@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+	<link href="/lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+	<div class="row ideabox3"></div>
+	<form class="form-horizontal" method="post" action="/register">
+		<div class="h3 header_1">
+			!!SHARE YOUR IDEAS!!
+		</div>
+		<div class="form-group side-color" style="margin-left: 400px">
+			<div class="col-md-6">
+				<h4 class="log_in">New to Idea Box ?</h4>
+				<p class="log">An Ideabox account is required to continue.</p>
+
+				<div class="form-group <%= (errors[0] ? 'has-error': '') %>">
+					<label class="signin">FULL NAME</label>
+					<input class="form-control" id="email_name" name="fullname" placeholder="Full name"
+						   required="required" type="text">
+					<span class="help-block"> <%= errors[0] %> </span>
+				</div>
+
+				<div class="form-group <%= (errors[1] ? 'has-error': '') %>">
+					<label class="signin">EMAIL</label>
+					<input class="form-control" id="email" name="email" placeholder="password"
+						   required="required" type="text">
+					<span class="help-block"> <%= errors[1] %> </span>
+				</div>
+
+				<div class="form-group <%= (errors[2] ? 'has-error': '') %>">
+					<label class="signin">PASSWORD</label>
+					<input class="form-control" id="pass_word" name="password" placeholder="password"
+						   required="required" type="password">
+					<span class="help-block"> <%= errors[2] %> </span>
+				</div>
+				<div class="form-group <%= (errors[3] ? 'has-error': '') %>">
+					<label class="signin">RE-PASSWORD</label>
+					<input class="form-control" id="pass_word" name="retype_password" placeholder="Re-enter password"
+					   required="required" type="password">
+					<span class="help-block"> <%= errors[3] %> </span>
+				</div>
+
+				<div class="form-group">
+					<p>By signing up, you agree to our <a href="#">terms of use</a> and <a href="a">privacy policy</a></p>
+					<div class="btn">
+						<button class="btn btn-danger" type="submit">Sign me up!</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</form>
+</body>
+</html>

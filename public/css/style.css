@@ -1,0 +1,36 @@
+
+.ideabox3{
+	background: url(../img/ideabox3.jpg);
+	height: 150px;
+	background-size:contain;
+	background-repeat: no-repeat;
+	background-position: 40px 0px;
+        margin-left: 320px;
+}
+.pwd{
+    padding-left: 50px;
+    text-height: auto;
+}
+.log_in{
+    font-family: corbel;
+    size: 10em;
+    font-style: inherit;
+    color: #5b0000;
+}
+.log{
+    color: #a4a4a4;
+}
+.signin{
+    color: #5b0000;
+}
+.header_1{
+    color: #cc0000;
+    font-family: elephant;
+    margin-left: 413px;
+    display: inline-block;
+}
+
+.form-group.has-error label.control-label,
+.form-group.has-error .help-block {
+    color: #f44336;
+}

@@ -1,0 +1,14 @@
+.banner img{
+width: 220px;
+height: 220px;
+margin-left: 10px;
+}
+.jumbotron{
+    padding-top: 100px;
+}
+.navbar-brand{
+    font-size: 1.9em;
+}
+h2{
+    font-size: 3em;
+}

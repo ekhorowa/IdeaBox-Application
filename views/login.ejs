@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>sign_up_login_page</title>
+	<link href="/lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+	<div class="row ideabox3"></div>
+	<form class="form-horizontal" method="post" action="/login">
+		<div class="h3 header_1">
+			!!SHARE YOUR IDEAS!!
+		</div>
+		<div class="form-group side-color" style="margin-left: 400px">
+			<div class="col-md-6">
+				<div class="form-group">
+					<h4 class="log_in">Log in here</h4>
+					<h4 class="log_in">Don't have an account ?
+						<a href="/register">Signup here</a>
+					</h4>
+
+					<span class="help-block" style="color:#f44336"> <%= message %> </span>
+
+				</div>
+
+				<div class="form-group">
+					<label class="signin">EMAIL</label>
+					<input class="form-control" id="email" name="email" placeholder="password" required="required" type="text">
+				</div>
+
+				<div class="form-group">
+					<label class="signin">PASSWORD</label>
+					<input class="form-control" id="pass_word" name="password" placeholder="password"
+						   required="required" type="password">
+				</div>
+
+				<div class="form-group">
+					<button class="btn btn-danger" type="submit">Log me in</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+</html>
