@@ -2,7 +2,7 @@ const Idea = function(firebase) {
   const database = firebase.database();//
   const ideaRef = database.ref('/ideas');
   const comments = database.ref('/comments');
-  //return {
+  return {
 
     addIdea: function(title, description, callback){
       var errors = [];
