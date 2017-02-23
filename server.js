@@ -26,7 +26,7 @@ app.use(session({ //I initialized my sessions
     storageBucket: "idea-box-project.appspot.com",
     messagingSenderId: "324400193565"
   };
-  firebase.initializeApp(config)
+  firebase.initializeApp(config);
 
 //I required the models I created here
 const userModel = require('./models/Users')(firebase);

@@ -7,7 +7,7 @@ const Idea = function(firebase) {
     addIdea: function(title, description, callback){
       var errors = [];
       if (typeof title === 'undefined' || title.length < 1) {
-        errors[0] = 'Title is required';
+        errors[0] = 'Titl is required';
       }
 
       if (typeof description === 'undefined' || description.length < 1) {
