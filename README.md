@@ -5,7 +5,7 @@ Functionality
 
 Users Can
 
-Create idea posts
+Create idea post
 Comment on posts
 Upvote / downvote posts
 See trending votes which based on highest vote difference
