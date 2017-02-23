@@ -76,7 +76,7 @@ const Idea = function(firebase) {
 
 //get unique idea id
 //pass it into the upvote function
- 
+
     upvote: function(ideakey){
 
     },
@@ -85,7 +85,7 @@ const Idea = function(firebase) {
 
     },
 
-    viewComments: function(ideaId){
+    viewComm: function(ideaId){
 
     }
 
