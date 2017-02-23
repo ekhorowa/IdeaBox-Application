@@ -1,4 +1,4 @@
-Ideabox ejs a
+
 Ideabox is an interactive social platform that connects people creative ideas. Ideabox is built on node, express,and bootstrap.
 
 Functionality
