@@ -5,7 +5,16 @@
 	background-size:contain;
 	background-repeat: no-repeat;
 	background-position: 40px 0px;
-        margin-left: 320px;
+    margin-left: 320px;
+}
+.ideabox4{
+    background: url(../img/ideabox4.jpg);
+    height: 150px;
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: 40px 0px;
+    margin-left: 700px;
+    margin-top: 20px;
 }
 .pwd{
     padding-left: 50px;
@@ -28,6 +37,12 @@
     font-family: elephant;
     margin-left: 413px;
     display: inline-block;
+}
+.header_2{
+    color: #cc0000;
+    font-family: elephant;
+    margin-left: 550px;
+    font-size: 30px;
 }
 
 .form-group.has-error label.control-label,

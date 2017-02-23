@@ -12,7 +12,8 @@
     "body-parser": "^1.16.1",
     "express": "^4.14.1",
     "express-session": "^1.15.1",
-    "firebase": "^3.6.10"
+    "firebase": "^3.6.10",
+    "simplemde": "^1.11.2"
   },
   "devDependencies": {
     "ejs": "^2.5.6",

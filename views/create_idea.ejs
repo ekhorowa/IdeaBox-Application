@@ -1,0 +1,33 @@
+<%- include('partials/header', {"page_title":'Create Idea'}); %>
+<div class="container">
+  <div class='row'>
+    <div class="col-md-6 col-md-offset-3">
+      <form method="post" action="/idea">
+
+        <div class="form-group <%= (errors[0] ? 'has-error': '') %>">
+          <label for="title">Title:</label>
+          <input class="form-control" name="title" id="title"/>
+          <span class="help-block"> <%= errors[0] %> </span>
+        </div>
+
+        <div class="form-group  <%= (errors[1] ? 'has-error': '') %>">
+          <label for="description" class="commentBox">
+            Description:
+          </label>
+          <textarea class="form-control codemirror" name="description" rows="5" id="description"></textarea>
+          <span class="help-block"> <%= errors[1] %> </span>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-danger">Post Idea</button>
+        </div>
+      </form>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+      <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+      <script>
+            var simplemde = new SimpleMDE({ element: document.getElementById("description") });
+      </script>
+    </div>
+  </div>
+
+</div>

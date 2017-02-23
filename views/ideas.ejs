@@ -1,0 +1,17 @@
+<%- include('partials/header', {"page_title":'Ideas'}); %>
+<div class="container">
+  <h2>Ideas</h2>
+  <div class="list-group">
+    <% for(let idea in ideas) {%>
+
+      <a href="/view_idea/<%=idea%>" class="list-group-item">
+        <h4 class="list-group-item-heading">
+          <%= ideas[idea].title %>
+        </h4>
+        <p class="list-group-item-text">
+          <%= ideas[idea].description %>
+        </p>
+      </a>
+    <% } %>
+  </div>
+</div>

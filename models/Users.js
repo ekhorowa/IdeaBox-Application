@@ -1,8 +1,9 @@
 const UsersModel = function(firebase) {
-  const database = firebase.database();
-  const usersRef = database.ref('/users');
+  const database = firebase.database();// I reference the database service
+  const usersRef = database.ref('/users');//I tell firebase to reference the user path
   return {
 
+    //Validation of users input
     login: function(email, password, callback) {
       var errors = [];
       if (typeof email === 'undefined' || email.length < 1) {
