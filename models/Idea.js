@@ -75,8 +75,7 @@ const Idea = function(firebase) {
     },
 
 //get unique idea id
-//pass it into the upvote function
- 
+//pass it into the upvote function 
     upvote: function(ideakey){
 
     },
