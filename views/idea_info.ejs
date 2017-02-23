@@ -1,0 +1,51 @@
+<%- include('partials/header', {"page_title": idea.title}); %>
+<div class="container">
+  <div class="list-group">
+    <h4 class="list-group-item-heading">
+      <%= idea.title %>
+    </h4>
+    <p class="list-group-item-text">
+      <%= idea.description %>
+    </p>
+  </div>
+  <button class='btn btn-defaul btn-sm'>
+    <span class='glyphicon glyphicon-thumbs-up'></span>
+    upvote
+  </button>
+  <button class='btn btn-defaul btn-sm'>
+    <span class='glyphicon glyphicon-thumbs-down'></span>
+    downvote
+  </button>
+  <hr/>
+  <h4>
+    <b>
+      <span class='glyphicon glyphicon-comment'> </span>
+      Comments
+    </b>
+  </h4>
+  <div class="media">
+    <div class="media-body">
+      <h5 class="media-heading"><b>Faith Solomon</b></h5>
+      <p>
+        sample comment
+      </p>
+    </div>
+  </div>
+  <hr/>
+  <form method="" action="">
+
+    <div class="form-group  <%= (errors[0] ? 'has-error': '') %>">
+      <label for="comment" class="commentBox">
+        Add comment:
+      </label>
+      <textarea class="form-control" name="comment" rows="5" id="comment"></textarea>
+      <span class="help-block"> <%= errors[0] %> </span>
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-danger" type="submit">Add comment</button>
+    </div>
+
+  </form>
+
+</div>
