@@ -1,11 +1,11 @@
-Ideabox
-Ideabox is an interactive social platform that connects people creative ideas. Ideabox is built on node, express, ejs and bootstrap.
+Ideabox ejs a
+Ideabox is an interactive social platform that connects people creative ideas. Ideabox is built on node, express,and bootstrap.
 
 Functionality
 
 Users Can
 
-Create idea post
+Create idea posts
 Comment on posts
 Upvote / downvote posts
 See trending votes which based on highest vote difference
