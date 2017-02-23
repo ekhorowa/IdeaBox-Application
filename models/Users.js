@@ -9,7 +9,7 @@ const UsersModel = function(firebase) {
       if (typeof email === 'undefined' || email.length < 1) {
         errors.push('Email is required');
       } else if (!this.verifyEmail(email)) {
-        errors.push('Email is not valid')
+        errors.push('Email is not valid');
       }
 
       if (typeof password === 'undefined' || password.length < 1) {
