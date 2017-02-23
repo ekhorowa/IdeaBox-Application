@@ -13,7 +13,7 @@ const UsersModel = function(firebase) {
       }
 
       if (typeof password === 'undefined' || password.length < 1) {
-        errors.push('Password is required');
+        errors.push('Password is required')
       }
 
       if (errors.length < 1) {
