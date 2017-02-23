@@ -14,7 +14,7 @@ app.set('trust proxy', 1);//I am running express behind a proxy here and am tell
 app.use(session({ //I initialized my sessions
   secret: 'secret',
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: t
 }));
 
 
