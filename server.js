@@ -105,6 +105,7 @@ app.route('/register')
 
   });
 
+//Its having issues
 app.get('/ideas', function(req, res) {
   if(typeof req.session.isLoggedIn !== 'undefined' && req.session.isLoggedIn){
     Idea.allIdeas(function(ideas) {
@@ -144,23 +145,13 @@ app.route('/idea')
   });
 
 app.post('/idea/comment/:ideaId', function(req, res){
-  const comment = req.body.comment;
-  Idea.addComment(req.params.ideaId, comment, req.session.userData.fullname, function(response) {
-    if (response.status == 'success') {
-      res.redirect( '/view_idea/' + req.params.ideaId);
-    } else {
-      Idea.getIdea(req.params.ideaId, function() {
-        res.send('An error occurred');
-      });
-    }
-  });
+
 });
 
 app.get('/view_idea/:ideaId', function(req, res){
   if(typeof req.session.isLoggedIn !== 'undefined' && req.session.isLoggedIn){
-    Idea.getIdea(req.params.ideaId, function(idea, comments, totalUpVotes, totalDownVotes) {
-      idea.comments = comments;
-      res.render('idea_info', {idea: idea, ideaId: req.params.ideaId, errors:[], totalUpVotes, totalDownVotes});
+    Idea.getIdea(req.params.ideaId, function(idea){
+      res.render('idea_info', {idea: idea, errors:[]});
     });
   }else {
     res.redirect('/login');
@@ -170,18 +161,14 @@ app.get('/view_idea/:ideaId', function(req, res){
 
 
 app.get('/upvote/:ideaId', function(req, res){
-  Idea.upvote(req.params.ideaId, req.session.userKey, function(){
-    res.redirect('/view_idea/'+ req.params.ideaId);
-  });
+
 });
 
 app.get('/downvote/:ideaId', function(req, res){
-  Idea.downvote(req.params.ideaId, req.session.userKey, function(){
-    res.redirect('/view_idea/'+ req.params.ideaId);
-  });
+
 });
 
-app.get('/logout', function(req, res) {
+app.get('/logout', function(req, res){
   delete req.session.userKey;
   delete req.session.userData;
   delete req.session.isLoggedIn;
