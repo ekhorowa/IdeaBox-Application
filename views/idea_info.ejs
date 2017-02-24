@@ -8,14 +8,14 @@
       <%= idea.description %>
     </p>
   </div>
-  <button class='btn btn-defaul btn-sm'>
+  <a href="/upvote/<%= ideaId %>" class='btn btn-default btn-sm'>
     <span class='glyphicon glyphicon-thumbs-up'></span>
-    upvote
-  </button>
-  <button class='btn btn-defaul btn-sm'>
+    upvote <%= totalUpVotes%>
+  </a>
+  <a href="/downvote/<%= ideaId %>" class='btn btn-default btn-sm'>
     <span class='glyphicon glyphicon-thumbs-down'></span>
-    downvote
-  </button>
+    downvote <%= totalDownVotes%>
+  </a>
   <hr/>
   <h4>
     <b>
@@ -23,16 +23,27 @@
       Comments
     </b>
   </h4>
+
+  <% for(let comment of idea.comments) {%>
   <div class="media">
     <div class="media-body">
-      <h5 class="media-heading"><b>Faith Solomon</b></h5>
+      <h5 class="media-heading">
+        <b><%= comment.username%></b>
+      </h5>
       <p>
-        sample comment
+        <%= comment.comment %>
       </p>
     </div>
   </div>
+
+  <% } %>
+
+  <p>
+    <%= (idea.comments.length < 1) ? 'No comments' : '' %>
+  </p>
+
   <hr/>
-  <form method="" action="">
+  <form method="post" action="<%= '/idea/comment/'+ideaId %>">
 
     <div class="form-group  <%= (errors[0] ? 'has-error': '') %>">
       <label for="comment" class="commentBox">
@@ -47,5 +58,4 @@
     </div>
 
   </form>
-
 </div>

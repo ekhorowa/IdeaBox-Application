@@ -1,7 +1,8 @@
 const Idea = function(firebase) {
   const database = firebase.database();
   const ideaRef = database.ref('/ideas');
-  const comments = database.ref('/comments');
+  const commentsRef = database.ref('/comments');
+  const votesRef = database.ref('/votes');
   return {
 
     addIdea: function(title, description, callback){
