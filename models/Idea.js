@@ -1,5 +1,5 @@
 const Idea = function(firebase) {
-  const database = firebase.database();//
+  const database = firebase.database();
   const ideaRef = database.ref('/ideas');
   const comments = database.ref('/comments');
   return {
