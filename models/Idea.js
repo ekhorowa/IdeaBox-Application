@@ -6,11 +6,11 @@ const Idea = function(firebase) {
 
     addIdea: function(title, description, callback){
       var errors = [];
-      if (typeof title === 'undefined' || title.length < 1) {
+      if (typeof title === 'undefined' || title.trim().length < 1) {
         errors[0] = 'Title is required';
       }
 
-      if (typeof description === 'undefined' || description.length < 1) {
+      if (typeof description === 'undefined' || description.trim().length < 1) {
         errors[1] = 'Description is required';
       }
 
@@ -50,10 +50,16 @@ const Idea = function(firebase) {
       });
     },
 
-    getIdea: function(id, callback){
-      database.ref('/ideas/'+id).once('value', function(idea) {
-        callback(idea.val());
+    getIdea: function(id, callback) {
+
+      database.ref('/ideas/'+id).once('value', (idea) => {
+        this.viewComments(id,  (comments) => {
+          this.totalVotes(id, (totalUpVotes, totalDownVotes) => {
+            callback(idea.val(), comments, totalUpVotes, totalDownVotes);
+          });
+        });
       });
+
     },
     ideaExists: function(title, callback) {
       ideaRef.once('value', function(ideas) {
@@ -70,24 +76,133 @@ const Idea = function(firebase) {
       });
     },
 
-    addComment: function(ideaId, comment_text, userId){
+    addComment: function(ideaId, comment_text, username, callback) {
+
+      if (typeof comment_text !== 'undefined' || comment_text.trim().length > 1) {
+
+        var newCommentKey = commentsRef.push().key;
+
+        callback({
+          status: 'success',
+          data:  database.ref('/comments/' + newCommentKey)
+            .set({
+              username: username,
+              ideaId: ideaId,
+              comment: comment_text
+            }),
+          message: 'Comment added'
+        });
+
+      } else {
+        callback({
+          status: 'fail',
+          message: 'Comment content is empty',
+          data: ['Comment content is empty']
+        });
+      }
 
     },
 
-//get unique idea id
-//pass it into the upvote function 
-    upvote: function(ideakey){
-
+    viewComments: function(ideaId, callback){
+      commentsRef.once('value', function(comments) {
+        const commentValues = comments.val();
+        const filteredComments = [];
+        for (var i in commentValues) {
+          if (commentValues.hasOwnProperty(i)) {
+            if (commentValues[i].ideaId == ideaId) {
+              filteredComments.push(commentValues[i]);
+            }
+          }
+        }
+        callback(filteredComments);
+      });
     },
 
-    downvote: function(ideaId, userId){
-
+    upvote: function(ideaId, userId, callback) {
+      this.hasVoted(ideaId, userId, function (hasVoted, key) {
+        if(hasVoted) {
+          database.ref('/votes/' + key)
+            .update({
+              ideaId: ideaId,
+              userId: userId,
+              type: 'upVote'
+            }).then(function(){
+            callback();
+          });
+        }else{
+          const key = votesRef.push().key;
+          database.ref('/votes/' + key)
+            .set({
+              ideaId: ideaId,
+              userId: userId,
+              type: 'upVote'
+            }).then(function(){
+            callback();
+          });
+        }
+      });
     },
 
-    viewComments: function(ideaId){
+    downvote: function(ideaId, userId, callback){
+      this.hasVoted(ideaId, userId, function (hasVoted, key) {
+        if(hasVoted) {
+          database.ref('/votes/' + key)
+            .update({
+              ideaId: ideaId,
+              userId: userId,
+              type: 'downVote'
+            }).then(function(){
+            callback();
+          });
+        }else{
+          const key = votesRef.push().key;
+          database.ref('/votes/' + key)
+            .set({
+              ideaId: ideaId,
+              userId: userId,
+              type: 'downVote'
+            }).then(function(){
+            callback();
+          });
+        }
+      });
+    },
 
+    hasVoted: function (ideaId, userId, callback) {
+      votesRef.once('value', function(votes) {
+        const votesValues = votes.val();
+        for (var i in votesValues) {
+          if (votesValues.hasOwnProperty(i)) {
+            if (votesValues[i].userId == userId
+              && votesValues[i].ideaId == ideaId) {
+              callback(true, i);
+              return;
+            }
+          }
+        }
+        callback(false);
+      });
+    },
+
+    totalVotes: function(ideaId, callback) {
+      var downVotesCount = 0,
+        upVotesCount = 0;
+      votesRef.once('value', function(votes) {
+        const votesValues = votes.val();
+        for (var i in votesValues) {
+          if (votesValues.hasOwnProperty(i)) {
+            if (votesValues[i].type == 'downVote'
+              && votesValues[i].ideaId == ideaId) {
+              downVotesCount++;
+            } else if (votesValues[i].type == 'upVote'
+              && votesValues[i].ideaId == ideaId) {
+              upVotesCount++;
+            }
+          }
+        }
+        callback(upVotesCount, downVotesCount);
+      });
     }
-
   };
 };
 
