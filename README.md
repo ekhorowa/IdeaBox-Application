@@ -1,7 +1,7 @@
 
 Ideabox is an interactive social platform that connects people creative ideas. 
 Ideabox is built on node, express,and bootstrap.
-Firebase was used in storing registered uers information.
+Firebase was used in storing registered users information.
 
 Functionality
 Users Can:
