@@ -42,11 +42,6 @@ const UsersModel = function(firebase) {
       }
     },
 
-    isUserLoggedIn: function() {
-      var email = window.localStorage.getItem('email');
-      return (email != undefined);
-    },
-
     register: function(fullname, email, password, verifyPassword, callback) {
       var errors = [];
       if (typeof fullname === 'undefined' || fullname.length < 1) {
@@ -116,7 +111,6 @@ const UsersModel = function(firebase) {
 
     userExists: function(email, password, callback) {
       database.ref('users').once('value', function(users) {
-        console.log('Tried to get value from user');
         var userValues = users.val();
         for (var i in userValues) {
           if (userValues.hasOwnProperty(i)) {
