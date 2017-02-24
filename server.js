@@ -1,6 +1,6 @@
 const express = require('express');//I imported express for use
 const bodyParser = require('body-parser');//I imported body-parser for extract the entire body portion of an incoming request
-
+require('dotenv').config();
 const firebase = require('firebase');//I imported firebase for use
 const firebaseDb = require('firebase/database');//I imported firebase database for use
 const session  = require('express-session'); // I imported express-session to store users session
@@ -17,14 +17,13 @@ app.use(session({ //I initialized my sessions
   saveUninitialized: true
 }));
 
-
 // I Initialized Firebase
   var config = {
-    apiKey: "AIzaSyBQxNSke9J0zdnZZLogg4JNavdqi1DheFc",
-    authDomain: "idea-box-project.firebaseapp.com",
-    databaseURL: "https://idea-box-project.firebaseio.com",
-    storageBucket: "idea-box-project.appspot.com",
-    messagingSenderId: "324400193565"
+    apiKey: process.env.apikey,
+    authDomain: process.env.authDomain,
+    databaseURL: process.env.databaseURL,
+    storageBucket: process.env.storageBucket,
+    messagingSenderId: process.env.messagingSenderId
   };
   firebase.initializeApp(config);
 
