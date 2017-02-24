@@ -1,23 +1,23 @@
 
-Ideabox is an interactive social platform that connects people creative ideas. Ideabox is built on node, express,and bootstrap.
+Ideabox is an interactive social platform that connects people creative ideas. 
+Ideabox is built on node, express,and bootstrap.
+Firebase was used in storing registered uers information.
 
 Functionality
+Users Can:
 
-Users Can
-
-Create idea posts
+Create ideas and posts
 Comment on posts
 Upvote / downvote posts
 See trending votes which based on highest vote difference
-You can also:
 
-See trending posts which based on highest vote difference
+Users can also:
+See trending posts which is based on highest vote difference.
+
 Download and usage
-
 Ideabox is lightweight and can be downloaded and run on local machines. The Basic requirement for local hosting is node
 
 Setup
-
 Copy link from github @ekhorowa
 From cmd(windows)/terminal(mac)
 Navigate to the directory
